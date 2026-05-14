@@ -1,0 +1,3 @@
+projects:
+  - repo: adityam23/music-gen
+#    branch: master   # only specify if not main
