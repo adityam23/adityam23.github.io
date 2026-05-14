@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | default: site.title }}</title>
+  {%- feed_meta -%}
+  {%- seo -%}
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+</head>
+<body>
+  <header>
+    <a href="{{ '/' | relative_url }}"><strong>{{ site.title }}</strong></a>
+  </header>
+  <main>{{ content }}</main>
+  <footer>
+    <p>© {{ 'now' | date: '%Y' }} {{ site.title }}</p>
+  </footer>
+</body>
+</html>

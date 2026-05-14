@@ -1,0 +1,9 @@
+body { font: 16px/1.6 system-ui, sans-serif; max-width: 42rem; margin: 2rem auto; padding: 0 1rem; color: #222; }
+header a { text-decoration: none; color: inherit; }
+.posts ul { list-style: none; padding: 0; }
+.posts li { border-bottom: 1px solid #eee; padding: 1rem 0; }
+.posts a { text-decoration: none; color: inherit; display: block; }
+.posts h3 { margin: 0 0 0.25rem; }
+.posts time { color: #888; font-size: 0.9rem; }
+article header time { color: #888; display: block; margin-bottom: 1.5rem; }
+.comments { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #eee; }

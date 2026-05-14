@@ -1,0 +1,36 @@
+---
+layout: default
+---
+<article>
+  <header>
+    <h1>{{ page.title }}</h1>
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%b %-d, %Y' }}</time>
+    {% if page.repo_url %}
+      <a href="{{ page.repo_url }}">View source on GitHub →</a>
+    {% endif %}
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  {% if page.giscus_repo and page.giscus_repo_id and page.giscus_category_id %}
+  <section class="comments">
+    <h2>Comments</h2>
+    <script src="https://giscus.app/client.js"
+            data-repo="{{ page.giscus_repo }}"
+            data-repo-id="{{ page.giscus_repo_id }}"
+            data-category="{{ page.giscus_category | default: 'Announcements' }}"
+            data-category-id="{{ page.giscus_category_id }}"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="preferred_color_scheme"
+            data-lang="en"
+            crossorigin="anonymous"
+            async></script>
+  </section>
+  {% endif %}
+</article>
