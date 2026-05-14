@@ -15,6 +15,7 @@ exclude:
   - Gemfile.lock
   - README.md
   - .github/
+  - .aggregated_posts
 
 defaults:
   - scope:
