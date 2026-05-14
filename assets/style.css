@@ -7,3 +7,9 @@ header a { text-decoration: none; color: inherit; }
 .posts time { color: #888; font-size: 0.9rem; }
 article header time { color: #888; display: block; margin-bottom: 1.5rem; }
 .comments { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #eee; }
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+}
