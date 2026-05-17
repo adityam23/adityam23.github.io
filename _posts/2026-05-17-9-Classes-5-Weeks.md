@@ -1,14 +1,12 @@
 ---
 title: Nine Classes, Five Weeks, One Radar
-description: One-line teaser for the index page.
+description: A postmortem on five weeks of bird radar classification for AI Cup 2026.
 date: 2026-05-17
 repo_url: https://github.com/anshuma1i/epoch_ai
 permalink: /projects/epoch-ai/ai-cup-2026/
 ---
 
 # Nine Classes, Five Weeks, One Radar
-
-*A postmortem on five weeks of bird radar classification for AI Cup 2026.*
 
 ## AI Cup 2026
 
