@@ -12,9 +12,9 @@
   --ink-soft: #5d564e;
   --rule: #161413;
   --rule-soft: #cdc7b7;
-  --accent: oklch(58% 0.16 220);     /* electric cyan-blue */
+  --accent: oklch(46% 0.1 150);      /* muted forest-meets-moss */
   --accent-ink: #f4f1e8;
-  --highlight: oklch(94% 0.05 220);
+  --highlight: oklch(94% 0.04 150);
   --shadow: #161413;
 }
 
@@ -25,9 +25,9 @@ html[data-theme="dark"] {
   --ink-soft: #9aa39d;
   --rule: #e8ece8;
   --rule-soft: #2a3236;
-  --accent: oklch(72% 0.18 220);
+  --accent: oklch(70% 0.11 150);
   --accent-ink: #0f1316;
-  --highlight: oklch(28% 0.06 220);
+  --highlight: oklch(26% 0.05 150);
   --shadow: #e8ece8;
 }
 
@@ -42,8 +42,6 @@ body {
   color: var(--ink);
   background: var(--paper);
   -webkit-font-smoothing: antialiased;
-  background-image:
-    repeating-linear-gradient(0deg, transparent 0 32px, color-mix(in srgb, var(--ink) 4%, transparent) 32px 33px);
 }
 
 ::selection { background: var(--accent); color: var(--accent-ink); }
