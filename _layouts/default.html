@@ -3,18 +3,70 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title | default: site.title }}</title>
-  {%- feed_meta -%}
-  {%- seo -%}
+  <title>{% if page.title %}{{ page.title | upcase }}({{ page.section | default: '7' }}) — {{ site.title | upcase }}{% else %}{{ site.title | upcase }}(1){% endif %}</title>
+  {% feed_meta %}
+  {% seo %}
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = stored || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) { document.documentElement.setAttribute('data-theme', 'light'); }
+    })();
+  </script>
 </head>
 <body>
-  <header>
-    <a href="{{ '/' | relative_url }}"><strong>{{ site.title }}</strong></a>
+  <header class="header" role="banner">
+    <a class="header__home" href="{{ '/' | relative_url }}">
+      <span class="header__logo" aria-hidden="true">man</span>
+      <span class="header__name">{{ site.title | upcase }}(1)</span>
+    </a>
+    <span class="header__spacer" aria-hidden="true"></span>
+    <span class="header__pos" aria-hidden="true">{% if page.url == '/' %}Page 1 of N{% else %}{{ page.title | upcase | truncate: 20, '' }}({{ page.section | default: '7' }}){% endif %}</span>
+    <button id="theme-toggle" class="header__toggle" type="button" aria-pressed="false" aria-label="Toggle dark mode">
+      <span aria-hidden="true">TERM=</span><span class="header__toggle-val">vt220</span>
+    </button>
   </header>
-  <main>{{ content }}</main>
-  <footer>
-    <p>© {{ 'now' | date: '%Y' }} {{ site.title }}</p>
+
+  <main id="content">
+    {{ content }}
+  </main>
+
+  <footer class="footer">
+    <div class="footer__row">
+      <span class="footer__cell footer__cell--l">{{ site.title | upcase }}(1)</span>
+      <span class="footer__cell footer__cell--c">— GNU/Personal —</span>
+      <span class="footer__cell footer__cell--r">{{ site.time | date: '%-d %B %Y' | upcase }}</span>
+    </div>
   </footer>
+
+  <script>
+    (function () {
+      var btn = document.getElementById('theme-toggle');
+      var val = btn.querySelector('.header__toggle-val');
+      function sync(t) {
+        btn.setAttribute('aria-pressed', t === 'dark' ? 'true' : 'false');
+        val.textContent = t === 'dark' ? 'xterm' : 'vt220';
+      }
+      sync(document.documentElement.getAttribute('data-theme'));
+      btn.addEventListener('click', function () {
+        var c = document.documentElement.getAttribute('data-theme');
+        var n = c === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', n);
+        try { localStorage.setItem('theme', n); } catch (e) {}
+        sync(n);
+        var iframe = document.querySelector('iframe.giscus-frame');
+        if (iframe) {
+          iframe.contentWindow.postMessage(
+            { giscus: { setConfig: { theme: n === 'dark' ? 'cobalt' : 'light' } } },
+            'https://giscus.app'
+          );
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

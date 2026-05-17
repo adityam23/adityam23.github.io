@@ -1,22 +1,94 @@
 ---
 layout: default
 ---
-<section class="intro">
-  <h1>Hi, I'm Aditya Menon.</h1>
-  <p>Short bio. Where you are, what you do, what you're into.</p>
+
+<section class="page" aria-labelledby="page-name">
+  <header class="page__masthead">
+    <span class="page__cell page__cell--l">{{ site.title | upcase }}(1)</span>
+    <span class="page__cell page__cell--c">— Personal Manual —</span>
+    <span class="page__cell page__cell--r">{{ site.time | date: '%Y-%m' }}</span>
+  </header>
+
+  <h1 id="page-name" class="page__name">
+    <span class="page__name-text">{{ site.title }}</span><span class="page__name-section">(1)</span>
+  </h1>
+
+  <section class="section">
+    <h2 class="section__head">ADITYA MENON</h2>
+    <p class="section__body">
+      <strong>{{ site.title }}</strong>
+      <span aria-hidden="true">—</span>
+      developer, writer, occasional ranter. Documented here.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2 class="section__head">SYNOPSIS</h2>
+    <pre class="section__synopsis"><span class="section__cmd">{{ site.title }}</span> <span class="section__flag">[--verbose]</span> <span class="section__flag">[--with-coffee]</span> <span class="section__arg">essay</span>...</pre>
+  </section>
+
+  <section class="section section--portrait">
+    <h2 class="section__head">FIGURE</h2>
+    <figure class="page__portrait">
+      <img src="{{ '/assets/me.jpg' | relative_url }}" alt="A photograph of the author" width="800" height="1000">
+      <figcaption>Fig. 1 — author at rest, between deploys.</figcaption>
+    </figure>
+  </section>
+
+  <section class="section">
+    <h2 class="section__head">DESCRIPTION</h2>
+    <p class="section__body">
+      <strong>{{ site.title }}</strong> is a developer and occasional essayist
+      working at the seam where systems meet people. Specializes in databases,
+      internal tooling, and the parts of the stack that nobody volunteered
+      for. Publishes long-form notes here when the mood strikes — which is
+      more often than expected.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2 class="section__head">OPTIONS</h2>
+    <dl class="section__opts">
+      <dt><code>--writes</code></dt>
+      <dd>long-form, infrequent, opinionated</dd>
+      <dt><code>--specialty</code></dt>
+      <dd>databases, internal tooling, the boring middle of the stack</dd>
+      <dt><code>--availability</code></dt>
+      <dd>limited; office hours via the comments</dd>
+      <dt><code>--mood</code></dt>
+      <dd>variable</dd>
+    </dl>
+  </section>
 </section>
 
-<section class="posts">
-  <h2>Projects</h2>
-  <ul>
+<aside class="caveat" role="note" aria-label="Notes">
+  <p class="caveat__flourish" aria-hidden="true">·  ·  ·</p>
+  <p class="caveat__label">NOTES</p>
+  <p class="caveat__text">all entries below are essays, not tutorials.</p>
+  <p class="caveat__text caveat__text--quiet">reading them does not void your warranty.</p>
+  <p class="caveat__flourish" aria-hidden="true">·  ·  ·</p>
+</aside>
+
+<section class="entries" aria-labelledby="entries-heading">
+  <h2 id="entries-heading" class="entries__head">EXAMPLES</h2>
+  <p class="entries__sub">// $ man -k . | sort -nr · {{ site.posts | size }} entries · newest first</p>
+
+  <dl class="entries__list">
     {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url | relative_url }}">
-        <h3>{{ post.title }}</h3>
-        <time>{{ post.date | date: '%b %-d, %Y' }}</time>
-        {% if post.description %}<p>{{ post.description }}</p>{% endif %}
-      </a>
-    </li>
+      <div class="entry" style="--i: {{ forloop.index0 }};">
+        <dt class="entry__term">
+          <a class="entry__link" href="{{ post.url | relative_url }}">
+            <span class="entry__name">{{ post.title | downcase | replace: ' ', '-' | replace: "'", '' | truncate: 26, '' }}</span><span class="entry__section">(7)</span>
+          </a>
+        </dt>
+        <dd class="entry__def">
+          <a class="entry__deflink" href="{{ post.url | relative_url }}">
+            <span class="entry__title">{{ post.title }}</span>
+            {% if post.description %}<span class="entry__desc">{{ post.description }}</span>{% endif %}
+            <span class="entry__date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y-%m-%d' }}</time></span>
+          </a>
+        </dd>
+      </div>
     {% endfor %}
-  </ul>
+  </dl>
 </section>

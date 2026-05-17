@@ -1,36 +1,71 @@
 ---
 layout: default
 ---
-<article>
-  <header>
-    <h1>{{ page.title }}</h1>
-    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%b %-d, %Y' }}</time>
-    {% if page.repo_url %}
-      <a href="{{ page.repo_url }}">View source on GitHub →</a>
-    {% endif %}
+
+<article class="man">
+  <header class="man__masthead">
+    <span class="man__cell man__cell--l">{{ page.title | upcase | truncate: 22, '' }}({{ page.section | default: '7' }})</span>
+    <span class="man__cell man__cell--c">— Personal Manual —</span>
+    <span class="man__cell man__cell--r">{{ page.date | date: '%Y-%m-%d' }}</span>
   </header>
 
-  <div class="post-content">
-    {{ content }}
-  </div>
+  <h1 class="man__title">
+    <span class="man__title-text">{{ page.title | downcase | replace: ' ', '-' | replace: "'", '' | truncate: 32, '' }}</span><span class="man__title-section">({{ page.section | default: '7' }})</span>
+  </h1>
 
-  {% if page.giscus_repo and page.giscus_repo_id and page.giscus_category_id %}
-  <section class="comments">
-    <h2>Comments</h2>
-    <script src="https://giscus.app/client.js"
-            data-repo="{{ page.giscus_repo }}"
-            data-repo-id="{{ page.giscus_repo_id }}"
-            data-category="{{ page.giscus_category | default: 'Announcements' }}"
-            data-category-id="{{ page.giscus_category_id }}"
-            data-mapping="pathname"
-            data-strict="0"
-            data-reactions-enabled="1"
-            data-emit-metadata="0"
-            data-input-position="top"
-            data-theme="preferred_color_scheme"
-            data-lang="en"
-            crossorigin="anonymous"
-            async></script>
+  <section class="msection">
+    <h2 class="msection__head">NAME</h2>
+    <p class="msection__body"><strong>{{ page.title }}</strong>{% if page.description %} <span aria-hidden="true">—</span> {{ page.description }}{% endif %}</p>
   </section>
-  {% endif %}
+
+  <section class="msection">
+    <h2 class="msection__head">FILED</h2>
+    <dl class="msection__meta">
+      <div class="msection__pair">
+        <dt>date</dt>
+        <dd><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: '%B %-d, %Y' }}</time></dd>
+      </div>
+      {% if page.repo_url %}
+        <div class="msection__pair">
+          <dt>source</dt>
+          <dd><a class="msection__repo" href="{{ page.repo_url }}" rel="noopener">{{ page.repo_url }}</a></dd>
+        </div>
+      {% endif %}
+    </dl>
+  </section>
+
+  <section class="msection">
+    <h2 class="msection__head">DESCRIPTION</h2>
+    <div class="msection__body man__body">
+      {{ content }}
+    </div>
+  </section>
+
+  <section class="msection">
+    <h2 class="msection__head">SEE ALSO</h2>
+    <p class="msection__body"><a href="{{ '/' | relative_url }}">{{ site.title | upcase }}(1)</a>{% if page.repo_url %}, <a href="{{ page.repo_url }}" rel="noopener">git-source(1)</a>{% endif %}</p>
+  </section>
 </article>
+
+{% if page.giscus_repo and page.giscus_repo_id and page.giscus_category_id %}
+<section class="discuss" aria-labelledby="discuss-heading">
+  <h2 id="discuss-heading" class="discuss__head">COMMENTS</h2>
+  <p class="discuss__sub">// $ man -s comments · threaded via github discussions</p>
+  <div class="discuss__frame">
+    <script src="https://giscus.app/client.js"
+      data-repo="{{ page.giscus_repo }}"
+      data-repo-id="{{ page.giscus_repo_id }}"
+      data-category="{{ page.giscus_category | default: 'Announcements' }}"
+      data-category-id="{{ page.giscus_category_id }}"
+      data-mapping="pathname"
+      data-strict="0"
+      data-reactions-enabled="1"
+      data-emit-metadata="0"
+      data-input-position="top"
+      data-theme="preferred_color_scheme"
+      data-lang="en"
+      crossorigin="anonymous"
+      async></script>
+  </div>
+</section>
+{% endif %}
