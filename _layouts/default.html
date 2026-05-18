@@ -25,7 +25,7 @@
       <span class="header__name">{{ site.title | upcase }}(1)</span>
     </a>
     <span class="header__spacer" aria-hidden="true"></span>
-    <span class="header__pos" aria-hidden="true">{% if page.url == '/' %}Page 1 of N{% else %}{{ page.title | upcase | truncate: 20, '' }}({{ page.section | default: '7' }}){% endif %}</span>
+    <span class="header__pos" aria-hidden="true">{% if page.url == '/' %}Page 1 of N{% else %}{{ page.title | upcase }}({{ page.section | default: '7' }}){% endif %}</span>
     <button id="theme-toggle" class="header__toggle" type="button" aria-pressed="false" aria-label="Toggle dark mode">
       <span aria-hidden="true">TERM=</span><span class="header__toggle-val">vt220</span>
     </button>

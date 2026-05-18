@@ -4,13 +4,13 @@ layout: default
 
 <article class="man">
   <header class="man__masthead">
-    <span class="man__cell man__cell--l">{{ page.title | upcase | truncate: 22, '' }}({{ page.section | default: '7' }})</span>
+    <span class="man__cell man__cell--l">{{ page.title | upcase }}({{ page.section | default: '7' }})</span>
     <span class="man__cell man__cell--c">— Personal Manual —</span>
     <span class="man__cell man__cell--r">{{ page.date | date: '%Y-%m-%d' }}</span>
   </header>
 
   <h1 class="man__title">
-    <span class="man__title-text">{{ page.title | downcase | replace: ' ', '-' | replace: "'", '' | truncate: 32, '' }}</span><span class="man__title-section">({{ page.section | default: '7' }})</span>
+    <span class="man__title-text">{{ page.title | downcase | replace: ' ', '-' | replace: "'", '' }}</span><span class="man__title-section">({{ page.section | default: '7' }})</span>
   </h1>
 
   <section class="msection">
@@ -50,7 +50,7 @@ layout: default
 {% if page.giscus_repo and page.giscus_repo_id and page.giscus_category_id %}
 <section class="discuss" aria-labelledby="discuss-heading">
   <h2 id="discuss-heading" class="discuss__head">COMMENTS</h2>
-  <p class="discuss__sub">// $ man -s comments · threaded via github discussions</p>
+  <p class="discuss__sub">// $ man -s 8 comments · threaded via github discussions</p>
   <div class="discuss__frame">
     <script src="https://giscus.app/client.js"
       data-repo="{{ page.giscus_repo }}"
