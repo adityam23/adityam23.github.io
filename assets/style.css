@@ -91,10 +91,14 @@ code { font-family: var(--mono); }
   color: var(--ink-soft);
   border-right: 1.5px solid var(--rule);
   letter-spacing: 0.06em;
-  max-width: 38ch;
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  flex: 0 1 auto;
+}
+@media (min-width: 720px) and (max-width: 1099px) {
+  .header__pos { max-width: 32ch; }
 }
 @media (min-width: 720px) { .header__pos { display: inline-flex; } }
 .header__toggle {

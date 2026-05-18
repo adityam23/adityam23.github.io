@@ -82,7 +82,7 @@ layout: default
       <div class="entry" style="--i: {{ forloop.index0 }};">
         <dt class="entry__term">
           <a class="entry__link" href="{{ post.url | relative_url }}">
-            <span class="entry__name">{{ post.title | downcase | replace: ' ', '-' | replace: "'", '' | truncate: 26, '' }}</span><span class="entry__section">(7)</span>
+            <span class="entry__name">{{ post.title | downcase | replace: ' ', '-' | replace: "'", ''| replace: ",", '' }}</span><span class="entry__section">(7)</span>
           </a>
         </dt>
         <dd class="entry__def">

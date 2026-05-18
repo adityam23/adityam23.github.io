@@ -10,7 +10,7 @@ layout: default
   </header>
 
   <h1 class="man__title">
-    <span class="man__title-text">{{ page.title | downcase | replace: ' ', '-' | replace: "'", '' }}</span><span class="man__title-section">({{ page.section | default: '7' }})</span>
+    <span class="man__title-text">{{ page.title | downcase | replace: ' ', '-' | replace: "'", '' | replace: ",", ''}}</span><span class="man__title-section">({{ page.section | default: '7' }})</span>
   </h1>
 
   <section class="msection">
