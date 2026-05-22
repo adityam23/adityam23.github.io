@@ -6,16 +6,16 @@
 :root {
   --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
 
-  --paper: #f4f1e8;
-  --paper-deep: #ece8db;
-  --ink: #161413;
-  --ink-soft: #5d564e;
-  --rule: #161413;
-  --rule-soft: #cdc7b7;
+  --paper: #eef0ec;        /* cold ivory — cool off-white, gray-green undertone */
+  --paper-deep: #e2e5e0;
+  --ink: #141615;
+  --ink-soft: #555a57;
+  --rule: #141615;
+  --rule-soft: #c8ccc6;
   --accent: oklch(46% 0.1 150);      /* muted forest-meets-moss */
-  --accent-ink: #f4f1e8;
-  --highlight: oklch(94% 0.04 150);
-  --shadow: #161413;
+  --accent-ink: #eef0ec;
+  --highlight: oklch(94% 0.025 170);
+  --shadow: #141615;
 }
 
 html[data-theme="dark"] {
@@ -217,25 +217,6 @@ main { display: block; }
 .section__cmd { font-weight: 700; color: var(--ink); }
 .section__flag { color: var(--accent); }
 .section__arg { font-style: italic; color: var(--ink-soft); }
-
-.section--portrait .section__body { display: none; }
-.page__portrait {
-  margin: 0;
-  display: grid;
-  gap: 8px;
-  max-width: 320px;
-}
-.page__portrait img {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  filter: grayscale(1) contrast(1.1);
-  border: 1.5px solid var(--rule);
-  background: var(--paper);
-  box-shadow: 4px 4px 0 var(--shadow);
-}
-html[data-theme="dark"] .page__portrait img { filter: grayscale(1) contrast(1.05); }
-.page__portrait figcaption { font-size: 12px; color: var(--ink-soft); }
 
 .section__opts {
   margin: 0;
